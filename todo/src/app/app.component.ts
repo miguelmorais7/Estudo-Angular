@@ -24,6 +24,8 @@ export class AppComponent {
       ])]
     });
 
+    this.load();
+
     /*this.todos.push(new Todo(1,'Limpar a cozinha', false));
     this.todos.push(new Todo(2,'Tirar o lixo', false));
     this.todos.push(new Todo(3,'Cortar o cabelo', true));*/
@@ -50,19 +52,33 @@ export class AppComponent {
     if(index !== -1){
       this.todos.splice(index,1);
     }
+    this.save();
   }
 
   markAsDone(todo: Todo){
     todo.done = true;
+    this.save();
   }
 
   markAsUndone(todo: Todo){
     todo.done = false;
+    this.save();
   }
 
   save(){
     const data = JSON.stringify(this.todos);
     localStorage.setItem('todos', data);
+  }
+
+  load(){
+    const data = localStorage.getItem('todos');
+    if(data){
+      this.todos = JSON.parse(data);
+    }
+    else{
+      this.todos = [];
+    }
+    
   }
 
   /*alteraTexto(){

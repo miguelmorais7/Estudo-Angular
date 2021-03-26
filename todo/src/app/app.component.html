@@ -4,7 +4,7 @@
   <li *ngFor='let todo of todos'>{{ todo }}</li>
 </ul>-->
 
-<h1>{{ title }}</h1>
+<h1 class="title">{{ title }}</h1>
 <ul>
   <p *ngIf="todos.length==0"><small>Você ainda não tem nenhuma tarefa hoje!</small></p>
   <li *ngFor="let todo of todos">
@@ -19,7 +19,7 @@
     <label>Tarefa: </label>
     <input type="text" placeholder="Título da Tarefa" maxlength="60" formControlName="title">
     <small *ngIf="form.controls.title.invalid && !form.controls.title.pristine">Este campo deve conter entre 3 e 60 caracteres</small>
-    <button [disabled]="form.invalid" (click)="add()">Salvar</button>
+    <button class="button" [disabled]="form.invalid" (click)="add()">Salvar</button>
   </fieldset>
 </form>
 
